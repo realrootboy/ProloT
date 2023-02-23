@@ -1,0 +1,26 @@
+version: '3.9'
+
+services:
+  api-dev:
+    image: node:lts-alpine
+    container_name: api-dev
+    tty: true
+    restart: on-failure
+    working_dir: /app
+    volumes:
+      - .:/app
+    ports:
+      - 3333:3333
+    command: sh -c 'npm i && npm run dev'
+    depends_on:
+      - mongo-db-dev
+  
+  mongo-db-dev:
+    image: mongo:latest
+    container_name: mongo-db-dev
+    tty: true
+    restart: on-failure
+    volumes:
+      - ./data:/data/db
+    ports:
+      - 27017:27017
