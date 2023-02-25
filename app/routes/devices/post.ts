@@ -37,5 +37,12 @@ export default async (request: FastifyRequest, reply: FastifyReply) => {
     info: infos,
   }
 
-  return await createDeviceUseCase.execute(device)
+  const created = await createDeviceUseCase.execute(device)
+
+  if (!created) {
+    reply.status(500)
+    return { error: 'Internal server error' }
+  }
+
+  reply.status(201).send(created)
 }

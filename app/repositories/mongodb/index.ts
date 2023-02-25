@@ -15,6 +15,14 @@ export class MongoDBRepository {
   get connection(): mongoose.Connection {
     return this._connection
   }
+
+  async clear(): Promise<void> {
+    const collections = await this._connection.db.collections()
+
+    for (const collection of collections) {
+      await collection.deleteMany({})
+    }
+  }
 }
 
 export default new MongoDBRepository()
