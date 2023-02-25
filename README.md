@@ -43,7 +43,7 @@ npm run test
 
 ## Routes
 
-All routes are available at `insomnia.json`. (You can import it to Insomnia) This file contains all routes and their parameters. This file includes too a websocket route to receive updates.
+All routes are available at `insomnia.json` (You can import it to Insomnia). This file contains all routes and their parameters. This file includes too a websocket route to receive updates.
 
 ## License
 
